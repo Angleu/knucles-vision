@@ -1,0 +1,37 @@
+<h1>Detalhes de {{Pessoa.username}}</h1>
+
+<h5>{{Pessoa.id}}</h5>
+<h5>{{Pessoa.password}}</h5>
+<h5>{{Pessoa.TypeUser}}</h5>
+<br/>
+<br/>
+<h3> Albuns e Musicas Postadas:</h3>
+<br/>
+{% for music  in MusicUser %}
+{{forloop.counter}}-{{music.title_Music}} ----- 
+        {% for album in AlbunsUser %}
+             {% if album.music.title_Music == music.title_Music %}
+          {{album.title_Album}}
+    {% endif %}
+{% endfor %}
+        <br/>
+{% endfor %}
+
+
+<h3> Videos Postados:</h3>
+{% for video in VideosUser %}
+  {{forloop.counter}} -- {{video.title}} // {{video.create_at}} //{{video.length}} //
+{% endfor %}
+
+<h3> Grupos a que Pertence:</h3>
+<br/>
+{% for group in Groups %}
+  <h5>{{forloop.counter}} -- {{group.name}} // {{group.description}} //
+{% endfor %}
+
+<h3> Grupos Criados:</h3>
+<br/>
+{% for group in MyGroups %}
+  <h5>{{forloop.counter}} -- {{group.GroupFK.name}} //
+{% endfor %}
+
